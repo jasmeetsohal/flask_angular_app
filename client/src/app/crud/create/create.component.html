@@ -1,0 +1,31 @@
+<div class="container">
+    <form (ngSubmit)="save()">
+      <div class="form-group col-xs-6">
+        <label for="name-field">Name</label>
+        <input type="text" class="form-control"  [(ngModel)]="employee.name"  name="name-field" placeholder="Your name" required>
+      </div>
+      
+      <div class="form-group col-xs-6">
+        <label for="email-field">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email-field" placeholder="Email address" required>
+      </div>
+      
+      <div class="form-group col-xs-6">
+            <label for="location-field">Location</label>
+            <input type="location" class="form-control" [(ngModel)]="employee.location" name="location-field" placeholder="location address" required>
+          </div>
+      
+      <div  class="form-group col-xs-6 hidden">
+        <label for="salary-subject-field">Salary</label>
+        <input type="number" class="form-control" [(ngModel)]="employee.salary"  name="salary-field" placeholder="salary" />
+      </div>
+      
+      
+      <div class="form-group col-xs-12">
+        <button type="button" (click)="cancel()" class="col-4 btn btn-danger offset-1">Cancel</button>  
+        <button *ngIf="!employee._id" type="submit" class="col-4 btn btn-primary offset-1">Save</button>  
+        <button *ngIf="employee._id" type="submit" class="col-4 btn btn-primary offset-1">Update</button>
+      </div>
+      
+    </form>
+  </div>

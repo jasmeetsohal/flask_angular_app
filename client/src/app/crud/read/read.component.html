@@ -1,0 +1,31 @@
+<div class="container table-div">
+<div class="col-1 offset-11"><span>Add</span><span class="fa fa-plus-square" [routerLink]="['./create']"></span>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Employee Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Location</th>
+    <th scope="col">Salary</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let emp of employeeList; index as i">
+    <!-- <th scope="row">{{ i + 1 }}</th> -->
+    <td>{{emp._id.$oid}}</td>
+    <td> {{ emp.name }} </td>
+    <td>{{emp.email}}</td>
+    <td>{{emp.location}}</td>
+    <td>{{emp.salary}}</td>
+    <td>
+      <span class="fa fa-edit" [routerLink]="['./edit',emp._id.$oid]"></span>
+      <!--<span class="fa fa-trash" (click)="openModal()" ></span> -->
+      <delete-modal [name]="emp.name" (open)="deleteEmp(emp._id.$oid)"></delete-modal>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
