@@ -52,10 +52,12 @@ def create_user():
   return jsonify(response),200
 
 
-@app.route('/read',methods=['GET'])
-def read_user():
-  users = dumps(db.users.find({}))
-  return users
+@app.route('/read/<s>/<l>',methods=['GET'])
+def read_user(s,l):
+  users_dict = {}
+  users_dict['total_count']=db.users.count_documents({})
+  users_dict['data']=db.users.find({},skip=int(s),limit=int(l))
+  return dumps(users_dict)
 
 @app.route('/find/<id>',methods=['GET'])
 def find_user(id):

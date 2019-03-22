@@ -7,13 +7,14 @@ import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../core/shared.module';
-import { NgbActiveModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalConfig, NgbPagination, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports:[RouterModule.forChild(crudRoutes),
              CommonModule,
              FormsModule,
-             SharedModule
+             SharedModule,
+             NgbModule
              ],
     declarations:[ReadComponent,
                   CreateComponent

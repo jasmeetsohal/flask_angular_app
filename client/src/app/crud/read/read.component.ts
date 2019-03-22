@@ -12,13 +12,23 @@ import { DeleteModal } from '../../core/delete-modal';
 })
 export class ReadComponent   {
   private employeeList: Employee[];
-  constructor(private crudService: CRUDService,
-              // private _modalService: NgbModal
+  private page = 1;
+  private pageSize = 2;
+  private collectionSize=0;
+  private p;
+  constructor(private crudService: CRUDService
               ) {
-      crudService.query().subscribe(response => {
-          this.employeeList = response;
-          console.log("employeee :: ",this.employeeList)
-      })
+      this.loadAll();
+  }
+
+  
+  private loadAll(){
+    let options={skip:(this.page-1)*this.pageSize,
+                 limit:this.pageSize}
+                  this.crudService.query(options).subscribe(response => {
+                    this.collectionSize = response['total_count'];
+                     this.employeeList = response['data'];
+              })
   }
 
   private deleteEmp(id:string){
@@ -29,10 +39,16 @@ export class ReadComponent   {
     })
   }
 
-  // openModal() {
-  //   this._modalService.open(DeleteModal);
-  // }
+  private onPageSizeModelChanged(event){
+    console.log("Evnet :: ",event);
+    this.pageSize = event;
+    this.loadAll();
+  }
 
-  
+  private pageChanged(event){
+    console.log("Changed event ",event);
+    this.page = event;
+    this.loadAll();
+  }
   
 }

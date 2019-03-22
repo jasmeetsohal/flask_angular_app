@@ -16,7 +16,7 @@ import { SharedModule } from './core/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
+    NgbModule.forRoot(),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

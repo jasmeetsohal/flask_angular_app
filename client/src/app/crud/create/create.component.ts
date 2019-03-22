@@ -6,7 +6,8 @@ import { Location } from '@angular/common'
 
 @Component({
     selector:'create',
-    templateUrl:'./create.component.html'
+    templateUrl:'./create.component.html',
+    styleUrls:['./create.component.scss']
 })
 export class CreateComponent {
     private employee = {} as Employee;

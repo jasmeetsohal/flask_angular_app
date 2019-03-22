@@ -12,8 +12,8 @@ export class CRUDService {
     constructor(
         private http: HttpClient) { }
     
-    public query(): Observable<Employee[]>{
-        return this.http.get<Employee[]>(`${baseUrl}/read`);
+    public query(options:any): Observable<Employee[]>{
+        return this.http.get<Employee[]>(`${baseUrl}/read/${options.skip}/${options.limit}`);
     }
 
     public save(emp:Employee): Observable<Employee>{

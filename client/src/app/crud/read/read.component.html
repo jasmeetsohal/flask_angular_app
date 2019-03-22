@@ -1,4 +1,8 @@
 <div class="container table-div">
+    <div class="form-group form-inline">
+        Search employee: <input class="form-control ml-2" type="text" name="searchTerm" />
+        <span class="ml-3" >Loading...</span>
+    </div>
 <div class="col-1 offset-11"><span>Add</span><span class="fa fa-plus-square" [routerLink]="['./create']"></span>
 </div>
 <table class="table table-striped">
@@ -13,8 +17,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let emp of employeeList; index as i">
-    <!-- <th scope="row">{{ i + 1 }}</th> -->
+  <tr *ngFor="let emp of employeeList">
     <td>{{emp._id.$oid}}</td>
     <td> {{ emp.name }} </td>
     <td>{{emp.email}}</td>
@@ -28,4 +31,16 @@
   </tr>
   </tbody>
 </table>
+
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination  [collectionSize]="collectionSize"  [(page)]="page" [pageSize]="pageSize" (change)="pageChanged($event)">
+    </ngb-pagination>
+  
+    <select class="custom-select" style="width: auto" (ngModelChange)="onPageSizeModelChanged($event)" [(ngModel)]="pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </div>
+
 </div>
