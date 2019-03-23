@@ -2,22 +2,34 @@
     <form (ngSubmit)="save()">
       <div class="form-group col-xs-6">
         <label for="name-field">Name</label>
+        <div class="input-div col-12">
+          <i class="fa fa-user"></i>
         <input type="text" class="form-control"  [(ngModel)]="employee.name"  name="name-field" placeholder="Your name" required>
+      </div>
       </div>
       
       <div class="form-group col-xs-6">
         <label for="email-field">Email</label>
-        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email-field" placeholder="Email address" required>
+        <div class="input-div col-12">
+        <i class="fa fa-envelope fa-10x"></i>
+        <input type="email"  class="form-control" [(ngModel)]="employee.email" name="email-field" placeholder="Email address" required>
+      </div>
       </div>
       
       <div class="form-group col-xs-6">
             <label for="location-field">Location</label>
+            <div class="input-div col-12">
+              <i class="fa fa-globe fa-10x"></i>
             <input type="location" class="form-control" [(ngModel)]="employee.location" name="location-field" placeholder="location address" required>
           </div>
+        </div>
       
       <div  class="form-group col-xs-6 hidden">
         <label for="salary-subject-field">Salary</label>
+        <div class="input-div col-12">
+            <i class="fa fa-money-bill-alt fa-10x"></i>
         <input type="number" class="form-control" [(ngModel)]="employee.salary"  name="salary-field" placeholder="salary" />
+      </div>
       </div>
       
       

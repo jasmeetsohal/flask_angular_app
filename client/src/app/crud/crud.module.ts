@@ -3,9 +3,9 @@ import { RouterModule } from '@angular/router';
 import { ReadComponent } from './read/read.component';
 import { crudRoutes } from './crud.route';
 import { CRUDService } from '../core/crud.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { CreateComponent } from './create/create.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../core/shared.module';
 import { NgbActiveModal, NgbModalConfig, NgbPagination, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,13 +13,14 @@ import { NgbActiveModal, NgbModalConfig, NgbPagination, NgbModule } from '@ng-bo
     imports:[RouterModule.forChild(crudRoutes),
              CommonModule,
              FormsModule,
+             ReactiveFormsModule,
              SharedModule,
              NgbModule
              ],
     declarations:[ReadComponent,
                   CreateComponent
                   ],
-    providers:[CRUDService,NgbActiveModal,NgbModalConfig]
+    providers:[CRUDService,NgbActiveModal,NgbModalConfig,DecimalPipe]
 })
 
 export class CRUDModule {

@@ -1,8 +1,9 @@
 <div class="container table-div">
+  <form>
     <div class="form-group form-inline">
-        Search employee: <input class="form-control ml-2" type="text" name="searchTerm" />
-        <span class="ml-3" >Loading...</span>
+        Search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
     </div>
+  </form>
 <div class="col-1 offset-11"><span>Add</span><span class="fa fa-plus-square" [routerLink]="['./create']"></span>
 </div>
 <table class="table table-striped">
@@ -18,8 +19,12 @@
   </thead>
   <tbody>
   <tr *ngFor="let emp of employeeList">
-    <td>{{emp._id.$oid}}</td>
-    <td> {{ emp.name }} </td>
+    <td>
+        <ngb-highlight [result]="emp._id.$oid" [term]="filter.value"></ngb-highlight>
+    </td>
+    <td>
+      <ngb-highlight [result]="emp.name" [term]="filter.value"></ngb-highlight>
+    </td>
     <td>{{emp.email}}</td>
     <td>{{emp.location}}</td>
     <td>{{emp.salary}}</td>
@@ -33,10 +38,11 @@
 </table>
 
 <div class="d-flex justify-content-between p-2">
-    <ngb-pagination  [collectionSize]="collectionSize"  [(page)]="page" [pageSize]="pageSize" (change)="pageChanged($event)">
+    <ngb-pagination  [collectionSize]="collectionSize"  [(page)]="page"  [pageSize]="pageSize" (change)="pageChanged($event)">
     </ngb-pagination>
   
     <select class="custom-select" style="width: auto" (ngModelChange)="onPageSizeModelChanged($event)" [(ngModel)]="pageSize">
+      <option [ngValue]="1">1 items per page</option>
       <option [ngValue]="2">2 items per page</option>
       <option [ngValue]="4">4 items per page</option>
       <option [ngValue]="6">6 items per page</option>

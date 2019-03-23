@@ -1,6 +1,22 @@
 .detail-form{
-    background-color: antiquewhite;
-    border-radius:6px;
-    padding: 50px;
+    background-color: #f5f6f7;
+    border-radius: 6px;
+    padding: 10px;
     color: black;
+    border: solid 0.5pt #d6d6d6;
+}
+
+i{
+    font-size: 23px;
+    background-color: grey;
+    border-radius: 5px 0 0 5px;
+    padding: 5px;
+}
+
+.input-div{
+    display: inline-flex;
+    padding: 0;
+}
+input{
+    border-radius:0 .25rem .25rem 0;
 }
